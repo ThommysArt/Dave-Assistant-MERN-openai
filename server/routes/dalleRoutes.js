@@ -8,14 +8,13 @@ dotenv.config();
 const router = express.Router();
 
 
-
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
 });
 
 router.route('/').get((req, res) => {
     res.send("Welcome to DALL-E")
-})
+});
 
 router.route('/').post(async(req, res) => {
     try {
@@ -35,6 +34,7 @@ router.route('/').post(async(req, res) => {
         console.log(error);
         res.status(500).send(error?.response.data.error.message)
     }
-})
+    
+});
 
 export default router;
