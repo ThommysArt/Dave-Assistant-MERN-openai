@@ -27,7 +27,9 @@ const startServer = async () => {
 
     try {
         connectDB(process.env.MONGODB_URL);
-        app.listen(8080, () => console.log('Server has started on port http://localhost:8080'));
+        console.log("Connected to mongodb server...");
+        app.listen(9080, () => console.log('Server has started on port http://localhost:9080'));
+        console.log("REST api is Active...")
     } catch (error) {
         console.log(error);
     }

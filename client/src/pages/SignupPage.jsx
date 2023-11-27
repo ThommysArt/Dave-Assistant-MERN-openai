@@ -24,7 +24,8 @@ export default function SignupPage () {
 
     const sign_up = async () => {
         try {
-            const response = await fetch('https://localhost:8080/api/v1/auth/signup',{
+            console.log("Attempting to sign up...");
+            const response = await fetch('https://localhost:9080/api/v1/auth/signup',{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -37,6 +38,7 @@ export default function SignupPage () {
             })
 
             const data = await response.json();
+            console.log(data);
             setUser({name: data.name, email: data.email, password: data.password});
             setSignedUp(true);
 

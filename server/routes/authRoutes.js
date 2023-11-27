@@ -56,11 +56,12 @@ router.route('/login').post(async (req, res) => {
 router.route('/signup').post(async (req, res) => {
     try {
         const {name, email, password} = req.body;
-        const user = await User.create({
+        const newUser = new User({
             name: name, 
             email: email, 
             password: hashPassword(password),
         });
+        await newUser.save();
         res.status(200).json({ success: true, data: newPost });
     } catch (error) {
         res.status(500).json({ success: false, message: error });
